@@ -1,0 +1,1 @@
+{"version":3,"file":"ErrorResponse.d.ts","sourceRoot":"","sources":["../../../src/Client/Abstracts/ErrorResponse.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,GAAG,EAAC,MAAM,oBAAoB,CAAC;AAEvC,qBAAa,aAAa;IACtB,IAAI,CAAC,EAAE,MAAM,CAAQ;IACrB,OAAO,EAAE,MAAM,CAAQ;IACvB,IAAI,CAAC,EAAE,GAAG,CAAC,QAAQ,CAAC,UAAU,EAAE,CAAQ;gBAE5B,KAAK,EAAE,GAAG,CAAC,QAAQ,CAAC,UAAU;CAK7C"}

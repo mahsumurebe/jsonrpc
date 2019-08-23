@@ -1,0 +1,1 @@
+{"version":3,"file":"RPCError.d.ts","sourceRoot":"","sources":["../../../src/Client/Errors/RPCError.ts"],"names":[],"mappings":"AAEA,qBAAa,QAAS,SAAQ,KAAK;aACF,IAAI;aAA+B,OAAO,EAAE,MAAM;aAAmC,IAAI,EAAE,MAAM,GAAG,MAAM;gBAA1G,IAAI,MAAY,EAAmB,OAAO,GAAE,MAAuB,EAAkB,IAAI,GAAE,MAAM,GAAG,MAAe;CAGnJ"}
