@@ -40,7 +40,6 @@ export class Client {
 
 
     mappingResponse(res: any | any[], multiple: boolean = false): rpcReturnType | rpcReturnType[] | ErrorResponse {
-        console.log(res);
         if (res instanceof Array) {
             return res.map((item: AxiosResponse) => {
                 return this.mappingResponse(item, true);
