@@ -9,6 +9,9 @@ export type ClientOptions = AxiosRequestConfig;
 
 type rpcReturnType = Response | Error ;
 
+
+export {ErrorResponse};
+
 export class Client {
     axios: AxiosInstance;
     defaultParams: [];

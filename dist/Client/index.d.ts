@@ -3,6 +3,7 @@ import { RPC } from "../@types/types";
 import { ErrorResponse } from "./Abstracts/ErrorResponse";
 export declare type ClientOptions = AxiosRequestConfig;
 declare type rpcReturnType = Response | Error;
+export { ErrorResponse };
 export declare class Client {
     axios: AxiosInstance;
     defaultParams: [];
@@ -13,5 +14,4 @@ export declare class Client {
     rpc<T>(arg1: RPC.IPayload, ...args: RPC.IPayload[]): Promise<T[]>;
     rpc<T>(args: RPC.IPayload[]): Promise<T>;
 }
-export {};
 //# sourceMappingURL=index.d.ts.map
