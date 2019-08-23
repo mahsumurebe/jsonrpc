@@ -1,5 +1,5 @@
 {
-  "name": "node-json-rpc",
+  "name": "jsonrpc",
   "version": "1.3.3",
   "description": "JSON-RPC Library for NodeJS",
   "main": "dist/index.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mahsumurebe/node-json-rpc.git"
+    "url": "git+https://github.com/mahsumurebe/jsonrpc.git"
   },
   "keywords": [
     "json-rpc",
@@ -18,9 +18,9 @@
   "author": "Mahsum UREBE <info@mahsumurebe.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mahsumurebe/node-json-rpc/issues"
+    "url": "https://github.com/mahsumurebe/jsonrpc/issues"
   },
-  "homepage": "https://github.com/mahsumurebe/node-json-rpc#readme",
+  "homepage": "https://github.com/mahsumurebe/jsonrpc#readme",
   "devDependencies": {
     "@types/node": "^12.7.2"
   },

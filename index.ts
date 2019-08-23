@@ -1,5 +1,5 @@
 export * from "./dist";
-declare module "node-json-rpc" {
+declare module "jsonrpc" {
     export namespace RPC {
         export interface IPayload {
             id?: any;
