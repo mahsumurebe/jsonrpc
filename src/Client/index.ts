@@ -1,16 +1,21 @@
 import Axios, {AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse} from "axios";
 import {stringify as paramsSerializer} from 'qs';
 import {RPCError} from "./Errors/RPCError";
-import {RPC} from "../@types/types";
-import Response = RPC.Response;
+import {Response} from "./Abstracts/Response";
 import {ErrorResponse} from "./Abstracts/ErrorResponse";
+import {RPC} from "../@types/types";
 
 export type ClientOptions = AxiosRequestConfig;
 
 type rpcReturnType = Response | Error ;
 
+type TMapResource = RPC.Response.IData;
+type TMapReturnType = Response | Error;
 
 export {ErrorResponse};
+
+export interface Client {
+}
 
 export class Client {
     axios: AxiosInstance;
@@ -42,21 +47,34 @@ export class Client {
     }
 
 
-    mappingResponse(res: any | any[], multiple: boolean = false): rpcReturnType | rpcReturnType[] | ErrorResponse {
-        if (res instanceof Array) {
-            return res.map((item: AxiosResponse) => {
-                return this.mappingResponse(item, true);
-            }) as Response[] | Error[];
-        }
-        if (res.error) {
-            if (!multiple) {
-                throw new RPCError(res.error, res.error.message || 'RPC Error', res.error.code || -32003);
+    mapResponse(response: TMapResource[], multiple?: boolean): TMapReturnType[];
+    mapResponse(response: TMapResource, multiple?: boolean): TMapReturnType;
+    mapResponse(response: TMapResource | TMapResource[], multiple?: boolean): TMapReturnType | TMapReturnType[] {
+        if (response instanceof Array) {
+            return response.map((item: TMapResource) => {
+                return this.mapResponse(item, true);
+            });
+        } else {
+            if (response.error) {
+                if (multiple) {
+                    throw new ErrorResponse(response.error);
+                } else {
+                    throw new RPCError(response.error, response.error.message || 'RPC Error', response.error.code || -32003);
+                }
             } else {
-                return new ErrorResponse(res.error);
+                if (multiple) {
+                    let result = new Response();
+                    result.code = response.code;
+                    result.id = response.id;
+                    result.jsonrpc = response.jsonrpc;
+                    result.result = response.result;
+                    return result;
+                } else {
+                    return response.result;
+                }
             }
         }
-        return res.result;
-    };
+    }
 
 
     async request(url, params): Promise<AxiosResponse | AxiosResponse[]> {
@@ -65,7 +83,7 @@ export class Client {
             .then(response => (response ? response.data : response))
             .catch((err: AxiosError) => {
                 if (err.response && err.response.data) {
-                    return this.mappingResponse(err.response.data);
+                    return this.mapResponse(err.response.data);
                 }
                 throw err;
             });
@@ -90,7 +108,9 @@ export class Client {
 
         return this
             .request('', data)
-            .then(this.mappingResponse.bind(this))
+            .then(data => {
+                return this.mapResponse(data as any);
+            })
             .then((data: any) => data);
     }
 }

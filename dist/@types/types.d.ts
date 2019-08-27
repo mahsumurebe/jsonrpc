@@ -26,15 +26,12 @@ export declare namespace RPC {
             id: any;
             jsonrpc: any;
             code?: any;
+            error?: IErrorData;
         }
         interface IErrorData {
             code?: number;
             message: string;
             data?: IErrorData[];
-        }
-        interface IError extends IData {
-            result: null;
-            error: IErrorData;
         }
     }
     namespace IClient {

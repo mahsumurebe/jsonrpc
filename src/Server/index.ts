@@ -18,8 +18,6 @@ export interface Server {
 
     on(event: 'ready', callback: (port: number, hostname: string, callback?: (...args: any[]) => void) => void): this;
 
-    on(event: 'response', callback: (output: RPC.Response.IError, req: Request, res: Response) => void): this;
-
     on(event: 'response', callback: (output: RPC.Response.IData, req: Request, res: Response) => void): this;
 
     on(event: 'request', callback: (body: RPC.Request.IData, req: Request, res: Response) => void): this;
@@ -29,8 +27,6 @@ export interface Server {
     on(event: 'ready', callback: (path: string, callback?: (...args: any[]) => void) => void): this;
 
     on(event: 'ready', callback: (handle: any, listeningListener?: () => void) => void): this;
-
-    on(event: 'response', callback: (output: RPC.Response.IError, req: Request) => void): this;
 
     on(event: 'response', callback: (output: RPC.Response.IData, req: Request) => void): this;
 
@@ -61,8 +57,6 @@ export interface Server {
     emit(event: 'ready', callback: (port: number, hostname: string, backlog: number, callback?: (...args: any[]) => void) => http.Server): boolean;
 
     emit(event: 'ready', callback: (port: number, hostname: string, callback?: (...args: any[]) => void) => http.Server): boolean;
-
-    emit(event: 'response', callback: (output: RPC.Response.IError, req: Request, res: Response) => void): boolean;
 
     emit(event: 'response', callback: (output: RPC.Response.IData, req: Request, res: Response) => void): boolean;
 

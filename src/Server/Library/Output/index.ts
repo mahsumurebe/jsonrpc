@@ -23,7 +23,7 @@ export class Output {
     }
 
     static generate(data: Error, req: RPC.Request.IData, res: Response)
-    static generate(data: any, req: RPC.Request.IData, res: Response): RPC.Response.IData | RPC.Response.IError {
+    static generate(data: any, req: RPC.Request.IData, res: Response): RPC.Response.IData {
 
         if (data instanceof Error) {
             return {

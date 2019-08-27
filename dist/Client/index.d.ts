@@ -1,14 +1,19 @@
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
-import { RPC } from "../@types/types";
+import { Response } from "./Abstracts/Response";
 import { ErrorResponse } from "./Abstracts/ErrorResponse";
+import { RPC } from "../@types/types";
 export declare type ClientOptions = AxiosRequestConfig;
-declare type rpcReturnType = Response | Error;
+declare type TMapResource = RPC.Response.IData;
+declare type TMapReturnType = Response | Error;
 export { ErrorResponse };
+export interface Client {
+}
 export declare class Client {
     axios: AxiosInstance;
     defaultParams: [];
     constructor(config: ClientOptions);
-    mappingResponse(res: any | any[], multiple?: boolean): rpcReturnType | rpcReturnType[] | ErrorResponse;
+    mapResponse(response: TMapResource[], multiple?: boolean): TMapReturnType[];
+    mapResponse(response: TMapResource, multiple?: boolean): TMapReturnType;
     request(url: any, params: any): Promise<AxiosResponse | AxiosResponse[]>;
     rpc<T>(args: RPC.IPayload): Promise<T>;
     rpc<T>(arg1: RPC.IPayload, ...args: RPC.IPayload[]): Promise<T[]>;

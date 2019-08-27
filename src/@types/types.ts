@@ -29,17 +29,13 @@ export namespace RPC {
             id: any;
             jsonrpc: any;
             code?: any;
+            error?: IErrorData;
         }
 
         export interface IErrorData {
             code?: number;
             message: string;
-            data?: IErrorData[]
-        }
-
-        export interface IError extends IData {
-            result: null;
-            error: IErrorData
+            data?: IErrorData[];
         }
     }
 
