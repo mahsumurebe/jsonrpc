@@ -4,7 +4,7 @@ import { ErrorResponse } from "./Abstracts/ErrorResponse";
 import { RPC } from "../@types/types";
 export declare type ClientOptions = AxiosRequestConfig;
 declare type TMapResource = RPC.Response.IData;
-declare type TMapReturnType<T> = Response<T> | Error;
+declare type TMapReturnType<T> = Response<T> | ErrorResponse;
 export { ErrorResponse };
 export declare class Client {
     axios: AxiosInstance;

@@ -94,7 +94,7 @@ export class Client {
                 };
             });
 
-        if (data.length === 1) {
+        if (data.length === 1 && !(args[0] instanceof Array || args.length > 1)) {
             data = data[0];
         }
 
