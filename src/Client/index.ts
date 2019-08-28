@@ -8,7 +8,7 @@ import {RPC} from "../@types/types";
 export type ClientOptions = AxiosRequestConfig;
 
 type TMapResource = RPC.Response.IData;
-type TMapReturnType = Response | Error;
+type TMapReturnType<T> = Response<T> | Error;
 
 export {ErrorResponse};
 
@@ -41,12 +41,12 @@ export class Client {
         this.axios = Axios.create(config);
     }
 
-    mapResponse(response: TMapResource[], multiple?: boolean): TMapReturnType[];
-    mapResponse(response: TMapResource, multiple?: boolean): TMapReturnType;
-    mapResponse(response: TMapResource | TMapResource[], multiple?: boolean): TMapReturnType | TMapReturnType[] {
+    mapResponse<T>(response: TMapResource[], multiple?: boolean): TMapReturnType<T>[];
+    mapResponse<T>(response: TMapResource, multiple?: boolean): TMapReturnType<T>;
+    mapResponse<T>(response: TMapResource | TMapResource[], multiple?: boolean): TMapReturnType<T> | TMapReturnType<T>[] {
         if (response instanceof Array) {
             return response.map((item: TMapResource) => {
-                return this.mapResponse(item, true);
+                return this.mapResponse<T>(item, true);
             });
         } else {
             if (response.error) {
@@ -57,7 +57,7 @@ export class Client {
                 }
             } else {
                 if (multiple) {
-                    let result = new Response();
+                    let result = new Response<T>();
                     result.code = response.code;
                     result.id = response.id;
                     result.jsonrpc = response.jsonrpc;
@@ -102,7 +102,7 @@ export class Client {
         return this
             .request('', data)
             .then(data => {
-                return this.mapResponse(data as any);
+                return this.mapResponse<T>(data as any);
             })
             .then((data: any) => data);
     }

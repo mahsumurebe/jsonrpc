@@ -4,19 +4,17 @@ import { ErrorResponse } from "./Abstracts/ErrorResponse";
 import { RPC } from "../@types/types";
 export declare type ClientOptions = AxiosRequestConfig;
 declare type TMapResource = RPC.Response.IData;
-declare type TMapReturnType = Response | Error;
+declare type TMapReturnType<T> = Response<T> | Error;
 export { ErrorResponse };
-export interface Client {
-}
 export declare class Client {
     axios: AxiosInstance;
     defaultParams: [];
     constructor(config: ClientOptions);
-    mapResponse(response: TMapResource[], multiple?: boolean): TMapReturnType[];
-    mapResponse(response: TMapResource, multiple?: boolean): TMapReturnType;
+    mapResponse<T>(response: TMapResource[], multiple?: boolean): TMapReturnType<T>[];
+    mapResponse<T>(response: TMapResource, multiple?: boolean): TMapReturnType<T>;
     request(url: any, params: any): Promise<AxiosResponse | AxiosResponse[]>;
-    rpc<T>(args: RPC.IPayload): Promise<T>;
-    rpc<T>(arg1: RPC.IPayload, ...args: RPC.IPayload[]): Promise<T[]>;
-    rpc<T>(args: RPC.IPayload[]): Promise<T>;
+    rpc<T>(args: RPC.IPayload): Promise<T | ErrorResponse>;
+    rpc<T>(arg1: RPC.IPayload, ...args: RPC.IPayload[]): Promise<T[] | ErrorResponse[]>;
+    rpc<T>(args: RPC.IPayload[]): Promise<T | ErrorResponse>;
 }
 //# sourceMappingURL=index.d.ts.map
