@@ -84,7 +84,7 @@ export class Client {
 
     rpc<T>(args: RPC.IPayload): Promise<T>;
     rpc<T>(arg1: RPC.IPayload, ...args: RPC.IPayload[]): Promise<TMapReturnType<T>[]>;
-    rpc<T>(args: RPC.IPayload[]): Promise<T>;
+    rpc<T>(args: RPC.IPayload[]): Promise<TMapReturnType<T>[]>;
     rpc<T>(...args: (RPC.IPayload | RPC.IPayload[])[]): Promise<T> {
         let data: (RPC.IPayload | RPC.IPayload[]) = args.flat(Infinity)
             .map((item, i) => {

@@ -13,8 +13,8 @@ export declare class Client {
     mapResponse<T>(response: TMapResource[], multiple?: boolean): TMapReturnType<T>[];
     mapResponse<T>(response: TMapResource, multiple?: boolean): TMapReturnType<T>;
     request(url: any, params: any): Promise<AxiosResponse | AxiosResponse[]>;
-    rpc<T>(args: RPC.IPayload): Promise<T | ErrorResponse>;
-    rpc<T>(arg1: RPC.IPayload, ...args: RPC.IPayload[]): Promise<T[] | ErrorResponse[]>;
-    rpc<T>(args: RPC.IPayload[]): Promise<T | ErrorResponse>;
+    rpc<T>(args: RPC.IPayload): Promise<T>;
+    rpc<T>(arg1: RPC.IPayload, ...args: RPC.IPayload[]): Promise<TMapReturnType<T>[]>;
+    rpc<T>(args: RPC.IPayload[]): Promise<TMapReturnType<T>[]>;
 }
 //# sourceMappingURL=index.d.ts.map
