@@ -8,8 +8,7 @@ import {RPC} from "../@types/types";
 export type ClientOptions = AxiosRequestConfig;
 
 type TMapResource = RPC.Response.IData;
-type TMapReturnType<T> = Response<T> | Error;
-
+type TMapReturnType<T> = Response<T> | ErrorResponse;
 export {ErrorResponse};
 
 export class Client {
