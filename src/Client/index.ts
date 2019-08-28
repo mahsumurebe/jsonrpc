@@ -7,15 +7,10 @@ import {RPC} from "../@types/types";
 
 export type ClientOptions = AxiosRequestConfig;
 
-type rpcReturnType = Response | Error ;
-
 type TMapResource = RPC.Response.IData;
 type TMapReturnType = Response | Error;
 
 export {ErrorResponse};
-
-export interface Client {
-}
 
 export class Client {
     axios: AxiosInstance;
@@ -46,7 +41,6 @@ export class Client {
         this.axios = Axios.create(config);
     }
 
-
     mapResponse(response: TMapResource[], multiple?: boolean): TMapReturnType[];
     mapResponse(response: TMapResource, multiple?: boolean): TMapReturnType;
     mapResponse(response: TMapResource | TMapResource[], multiple?: boolean): TMapReturnType | TMapReturnType[] {
@@ -76,7 +70,6 @@ export class Client {
         }
     }
 
-
     async request(url, params): Promise<AxiosResponse | AxiosResponse[]> {
         return this.axios
             .post(url, params || this.defaultParams, {})
@@ -89,10 +82,10 @@ export class Client {
             });
     }
 
-    rpc<T>(args: RPC.IPayload): Promise<T>;
-    rpc<T>(arg1: RPC.IPayload, ...args: RPC.IPayload[]): Promise<T[]>;
-    rpc<T>(args: RPC.IPayload[]): Promise<T>;
-    rpc<T>(...args: (RPC.IPayload | RPC.IPayload[])[]): Promise<T> {
+    rpc<T>(args: RPC.IPayload): Promise<T | ErrorResponse>;
+    rpc<T>(arg1: RPC.IPayload, ...args: RPC.IPayload[]): Promise<T[] | ErrorResponse[]>;
+    rpc<T>(args: RPC.IPayload[]): Promise<T | ErrorResponse>;
+    rpc<T>(...args: (RPC.IPayload | RPC.IPayload[])[]): Promise<T | ErrorResponse> {
         let data: (RPC.IPayload | RPC.IPayload[]) = args.flat(Infinity)
             .map((item, i) => {
                 return {
