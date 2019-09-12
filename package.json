@@ -29,8 +29,9 @@
   },
   "typings": "@types/types.d.ts",
   "files": [
-    "dist/",
-    "src/",
+    "@types/",
+    "Client/",
+    "Server/",
     "package.json",
     "README.md",
     "index.ts",
