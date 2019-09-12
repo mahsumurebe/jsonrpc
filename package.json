@@ -27,7 +27,6 @@
     "express": "^4.17.1",
     "axios": "latest"
   },
-  "typings": "@types/types.d.ts",
   "files": [
     "@types/",
     "Client/",

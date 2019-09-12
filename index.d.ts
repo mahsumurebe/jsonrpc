@@ -1,4 +1,5 @@
 import "array-flat-polyfill";
+export * from './@types/types';
 export * from './Server';
 export * from './Server/Errors/InternalError';
 export * from './Server/Errors/InvalidParams';
