@@ -2,7 +2,7 @@ export declare namespace RPC {
     interface IPayload {
         id?: any;
         method: string;
-        params: any;
+        params?: any;
     }
     namespace Request {
         interface IData extends IPayload {
