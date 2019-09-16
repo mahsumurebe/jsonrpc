@@ -3,7 +3,7 @@ import { Express, Request, Response } from "express";
 import { Routes } from "./Library/Routes";
 import { EventEmitter } from "events";
 import * as http from "http";
-import { RPC } from "../@types/types";
+import { RPC } from "..";
 import { Output } from "./Library/Output";
 import { AddressInfo } from "net";
 export { Output };
@@ -35,5 +35,6 @@ export declare class Server extends EventEmitter {
     constructor();
     init(): void;
     listen(port: number, host?: string): Promise<http.Server>;
+    close(): Promise<void>;
 }
 //# sourceMappingURL=index.d.ts.map
