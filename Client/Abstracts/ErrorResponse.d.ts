@@ -1,4 +1,4 @@
-import { RPC } from "../../@types/types";
+import { RPC } from "../..";
 export declare class ErrorResponse {
     code?: number;
     message: string;
