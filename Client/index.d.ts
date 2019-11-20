@@ -12,6 +12,7 @@ export declare class Client {
     defaultParams: TParamType;
     permanentArguments: any[];
     constructor(config: ClientOptions);
+    baseErrorHandler(response: any, multiple?: boolean): ErrorResponse | void;
     errorHandler(response: any, multiple?: boolean): ErrorResponse | void;
     mapResponse<T>(response: TMapResource[], multiple?: boolean): TMapReturnType<T>[];
     mapResponse<T>(response: TMapResource, multiple?: boolean): TMapReturnType<T>;
