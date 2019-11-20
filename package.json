@@ -1,6 +1,6 @@
 {
   "name": "jsonrpc",
-  "version": "1.3.3",
+  "version": "1.3.5",
   "description": "JSON-RPC Library for NodeJS",
   "main": "index.js",
   "repository": {
