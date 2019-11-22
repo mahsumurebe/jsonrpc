@@ -1,9 +1,9 @@
 /// <reference types="node" />
 import { Express, Request, Response } from "express";
 import { Routes } from "./Library/Routes";
+import { RPC } from "..";
 import { EventEmitter } from "events";
 import * as http from "http";
-import { RPC } from "..";
 import { Output } from "./Library/Output";
 import { AddressInfo } from "net";
 export { Output };
@@ -24,7 +24,7 @@ export declare class Server extends EventEmitter {
     on(event: 'error', callback: (e: Error, body?: any, req?: Request, res?: Response) => void): this;
     emit(event: 'ready', port: number, hostname: string, backlog: number, callback?: (...args: any[]) => void): boolean;
     emit(event: 'ready', port: number, hostname: string, callback?: (...args: any[]) => void): boolean;
-    emit(event: 'response', output: RPC.Response.IData, req?: Request, res?: Response): boolean;
+    emit(event: 'response', output: RPC.Response.IData | RPC.Response.IData[], req?: Request, res?: Response): boolean;
     emit(event: 'error', e: Error, body?: any, req?: Request, res?: Response): boolean;
     emit(event: 'ready', port: number, callback?: (...args: any[]) => void): boolean;
     emit(event: 'ready', path: string, callback?: (...args: any[]) => void): boolean;
