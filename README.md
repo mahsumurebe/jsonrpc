@@ -1,4 +1,6 @@
 # JSON-RPC For NodeJS
 JSON-RPC Client and Server Library for NodeJS
 
-Documentation: https://www.mahsumurebe.com/blog/nodejs-icin-json-rpc-paketi/ (Only Turkish)
+# DEPRECATED
+This repository has been replaced with [jrpc-server](https://github.com/mahsumurebe/jrpc-server) repos.
+Please use ```npm i @mahsumurebe/jrpc-server```.
